@@ -1,8 +1,8 @@
 # My dotfiles
 
-Dotfiles are located in `dotfiles` folder, installation process is done by `install` script in the
-root folder of the repository. `scripts` folder contain platform specific installation logic and
-some additional utilities.
+Dotfiles are located in `dotfiles` folder, installation process is done by `install-dotfiles` script
+in the root folder of the repository. `scripts` folder contain platform-specific installation logic
+and some additional utilities.
 
 ## Installation
 
