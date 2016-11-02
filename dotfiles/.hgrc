@@ -1,0 +1,42 @@
+[hostfingerprints]
+bitbucket.org = 3f:d3:c5:17:23:3c:cd:f5:2d:17:76:06:93:7e:ee:97:42:21:14:aa
+
+[ui]
+ssh = ssh -C
+
+[paths]
+lwml = http://antonlukyanov@bitbucket.org/antonlukyanov/lwml
+devenv = http://antonlukyanov@bitbucket.org/antonlukyanov/devenv
+
+[schemes]
+my = ssh://hg@bitbucket.org/antonlukyanov/
+
+[extensions]
+hgext.graphlog =
+strip =
+color =
+progress =
+rebase =
+schemes =
+
+[alias]
+slog = log --style=$HOME/Development/misc/mercurial-cli-templates/map-cmdline.slog
+nlog = log --style=$HOME/Development/misc/mercurial-cli-templates/map-cmdline.nlog
+sglog = glog --style=$HOME/Development/misc/mercurial-cli-templates/map-cmdline.sglog
+
+[color]
+status.modified = cyan
+status.added = green
+status.removed = red
+status.deleted = yellow bold underline
+status.unknown = magenta bold underline
+status.ignored = black bold
+diff.diffline = none
+diff.extended = cyan
+diff.file_a = red
+diff.file_b = green
+diff.hunk = yellow bold
+diff.deleted = red
+diff.inserted = green
+diff.changed = white
+diff.trailingwhitespace = white_background

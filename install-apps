@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo '--> Installing apps'
+source "scripts/run-brew.sh"
+source "scripts/run-brew-cask.sh"
+source "scripts/run-pip3.sh"

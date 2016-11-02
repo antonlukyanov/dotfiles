@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+printhelp() {
+cat <<EOF
+Dotfiles installer.
+
+Usage:   ./install dotfilesdir installdir
+
+Arguments
+
+    dotfilesdir
+        Directory containing dotfiles which will be linked. It is '\$PWD/dotfiles' by default.
+
+    installdir
+        Directory where dotfiles will be installed. It is home folder by default.
+
+Options
+
+    -h, --help
+        Display this help message.
+
+EOF
+}
+
+while [[ $# -ge 1 ]]; do
+    key="$1"
+    case $key in
+        -h|--help)
+        printhelp
+        exit 0
+        ;;
+
+        *)
+        ;;
+    esac
+    shift
+done
+
+dotfilesdir=$1
+installdir=$2
+
+if [[ -z "$dotfilesdir" ]]; then
+    dotfilesdir=$PWD/dotfiles
+fi
+
+if [[ -z "$installdir" ]]; then
+    installdir=~
+fi
+
+echo "--> Installing dotfiles to $installdir"
+
+for dotfile in $(find $dotfilesdir -type f); do
+    filename=$(basename "$dotfile")
+    filedir=$(dirname "$dotfile")
+    filedir="${filedir##$dotfilesdir}"
+    filedir="${filedir##/}"
+    if [[ -z "$filedir" ]]; then
+        dstdir="$installdir"
+    else
+        dstdir="$installdir/$filedir"
+    fi
+    dstfile="$dstdir/$filename"
+
+    if [[ -n "$dstdir" && ! -d "$dstdir" ]]; then
+        mkdir -p "$dstdir"
+    fi
+
+    if [[ -L "$dstfile" || -f "$dstfile" ]]; then
+        rm "$dstfile"
+    fi
+
+    relfilepath="$filedir/$filename"
+    relfilepath="${relfilepath##/}"
+    echo "  $relfilepath"
+    ln -s "$dotfile" "$dstfile"
+done
