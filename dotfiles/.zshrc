@@ -60,8 +60,11 @@ alias bal.tm='m bal -p "this month"'
 alias bal.exp.tm='m bal Расходы -p "this month"'
 alias reg='m reg'
 alias reg.exp='m reg Расходы'
-alias reg.exp.tm='m reg Расходы -p "this month"'
+alias reg.exp.tm='reg.exp -p "this month"'
+alias reg.exp.lm='reg.exp -p "last month"'
 alias acc='m acc --tree'
+alias m.monthly='m balance --tree --monthly Расходы'
+alias m.activity='m activity --monthly'
 
 ssdtot() {
     smartctl -l devstat /dev/disk0 | grep -i 'sectors wri' | awk '{ print $4/2097152 }'

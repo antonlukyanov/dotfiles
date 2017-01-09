@@ -9,8 +9,8 @@ PATH=$PATH:$HOME/bin/node_modules/.bin
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 export PATH
 
-PYTHONPATH=$HOME/Development/dcglab/pamela/utils
-PYTHONPATH=$PYTHONPATH:$HOME/Development/dcglab/devenv/share
+PYTHONPATH=$HOME/Development/current/pamela/utils
+PYTHONPATH=$PYTHONPATH:$HOME/Development/current/devenv/share
 export PYTHONPATH
 
 export HOMEBREW_NO_ANALYTICS=1
