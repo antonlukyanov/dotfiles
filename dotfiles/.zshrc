@@ -34,7 +34,7 @@ alias mktar='tar -czvf'
 alias untar='tar -xzvf'
 alias ungz='gzip -dv'
 
-alias updrc='source $HOME/.zshrc; source $HOME/.zshenv'
+alias updrc='source $HOME/.zshrc'
 alias zshrc='$EDITOR $HOME/.zshrc'
 
 alias where='which'
@@ -42,7 +42,10 @@ alias sz='du -h -d 0'
 
 alias jnb='jupyter notebook'
 
-# Only for OSX.
+#
+# Only for OSX
+#
+
 if [[ $(uname) == "Darwin" ]]; then
     alias bi='brew install'
     alias bs='brew search'
@@ -52,22 +55,51 @@ if [[ $(uname) == "Darwin" ]]; then
     alias f='open -a Finder .'
     alias ftp.start='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
     alias ftp.stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
+
+    #
+    # PostgreSQL
+    #
+
+    alias pg.start='pg_ctl -D /usr/local/var/postgres start'
+    alias pg.stop='pg_ctl -D /usr/local/var/postgres stop'
+
+    #
+    # Miscellaneous
+    #
+
+    alias flushdns='sudo killall -HUP mDNSResponder'
+
+    ssdtot() {
+        smartctl -l devstat /dev/disk0 | grep -i 'sectors wri' | awk '{ print $4/2097152 }'
+    }
 fi
+
+#
+# Hledger
+#
 
 alias m='hledger'
 alias bal='m bal'
 alias bal.tm='m bal -p "this month"'
+alias bal.exp='m bal Расходы'
 alias bal.exp.tm='m bal Расходы -p "this month"'
+alias bal.exp.lm='m bal Расходы -p "last month"'
+alias bal.inc='m bal Доходы'
+alias bal.inc.tm='m bal Доходы -p "this month"'
+alias bal.inc.lm='m bal Доходы -p "last month"'
 alias reg='m reg'
 alias reg.exp='m reg Расходы'
 alias reg.exp.tm='reg.exp -p "this month"'
 alias reg.exp.lm='reg.exp -p "last month"'
 alias acc='m acc --tree'
-alias m.monthly='m balance --tree --monthly Расходы'
+alias m.exp.monthly='bal --tree -p $(date +'%Y') --monthly Расходы'
+alias m.exp.monthly3='bal --tree -p "$(date -v-3m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
+alias m.exp.monthly12='bal --tree -p "$(date -v-12m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
+alias m.sal.monthly="bal --tree -p $(date +'%Y/%m') --monthly Доходы"
+alias m.sal.monthly3='bal --tree -p "$(date -v-3m +'%Y/%m') $(date +'%Y/%m')" --monthly Доходы'
+alias m.sal.monthly12='bal --tree -p "$(date -v-12m +'%Y/%m') $(date +'%Y/%m')" --monthly Доходы'
 alias m.activity='m activity --monthly'
 
-ssdtot() {
-    smartctl -l devstat /dev/disk0 | grep -i 'sectors wri' | awk '{ print $4/2097152 }'
-}
-
+zenv="$HOME/.zshenv"
+if [ -f $zenv ]; then source $zenv; fi
 if [ -f ~/.devenv ]; then source ~/.devenv; fi

@@ -20,9 +20,9 @@ rebase =
 schemes =
 
 [alias]
-slog = log --style=$HOME/Development/misc/mercurial-cli-templates/map-cmdline.slog
-nlog = log --style=$HOME/Development/misc/mercurial-cli-templates/map-cmdline.nlog
-sglog = glog --style=$HOME/Development/misc/mercurial-cli-templates/map-cmdline.sglog
+slog = log --style=$HOME/Development/3dparty/mercurial-cli-templates/map-cmdline.slog
+nlog = log --style=$HOME/Development/3dparty/mercurial-cli-templates/map-cmdline.nlog
+sglog = glog --style=$HOME/Development/3dparty/mercurial-cli-templates/map-cmdline.sglog
 
 [color]
 status.modified = cyan

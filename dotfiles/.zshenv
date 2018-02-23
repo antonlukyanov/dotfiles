@@ -3,7 +3,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 TERM=xterm-256color
 
-PATH=$PATH:/usr/local/sbin
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
 PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/bin/node_modules/.bin
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
@@ -22,7 +22,7 @@ else
     export EDITOR='subl'
 fi
 
-zshenv_local='~/.zshenv-local'
-if [ -f $zshenv_local ]; then
-    source $zshenv_local
+zlocal="$HOME/.zshenv-local"
+if [ -f $zlocal ]; then
+    source $zlocal
 fi
