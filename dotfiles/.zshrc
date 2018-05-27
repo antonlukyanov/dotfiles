@@ -106,6 +106,9 @@ alias m.activity='m activity --monthly'
 
 alias cvt.toalac='for f in *.flac; do ffmpeg -i "$f"  -vf "crop=((in_w/2)*2):((in_h/2)*2)" -c:a alac "${f%.flac}.m4a"; done'
 
+zrclocal="$HOME/.zshrc-local"
+if [ -f $zrclocal ]; then source $zrclocal; fi
+
 zenv="$HOME/.zshenv"
 if [ -f $zenv ]; then source $zenv; fi
 if [ -f ~/.devenv ]; then source ~/.devenv; fi
