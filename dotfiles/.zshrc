@@ -100,6 +100,12 @@ alias m.sal.monthly3='bal --tree -p "$(date -v-3m +'%Y/%m') $(date +'%Y/%m')" --
 alias m.sal.monthly12='bal --tree -p "$(date -v-12m +'%Y/%m') $(date +'%Y/%m')" --monthly Доходы'
 alias m.activity='m activity --monthly'
 
+#
+# FFmpeg
+#
+
+alias cvt.toalac='for f in *.flac; do ffmpeg -i "$f"  -vf "crop=((in_w/2)*2):((in_h/2)*2)" -c:a alac "${f%.flac}.m4a"; done'
+
 zenv="$HOME/.zshenv"
 if [ -f $zenv ]; then source $zenv; fi
 if [ -f ~/.devenv ]; then source ~/.devenv; fi
