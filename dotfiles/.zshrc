@@ -1,3 +1,14 @@
+OS=$(uname)
+IS_MACOS=false
+IS_LINUX=false
+
+if [[ "${OS}" == "Darwin" ]]; then
+    IS_MACOS=true
+elif [[ "${OS}" == "Linux" ]]; then
+    IS_LINUX=true
+fi
+
+
 #
 # zsh configuration
 #
@@ -46,7 +57,7 @@ alias jnb='jupyter notebook'
 # Only for OSX
 #
 
-if [[ $(uname) == "Darwin" ]]; then
+if $IS_MACOS ; then
     alias bi='brew install'
     alias bs='brew search'
     alias bl='brew list'
@@ -72,6 +83,14 @@ if [[ $(uname) == "Darwin" ]]; then
     ssdtot() {
         smartctl -l devstat /dev/disk0 | grep -i 'sectors wri' | awk '{ print $4/2097152 }'
     }
+fi
+
+#
+# Only for Linux
+#
+
+if $IS_LINUX ; then
+    alias changefnmode='sudo bash -c "echo 2 > /sys/module/hid_apple/parameters/fnmode"'
 fi
 
 #
@@ -111,4 +130,5 @@ if [ -f $zrclocal ]; then source $zrclocal; fi
 
 zenv="$HOME/.zshenv"
 if [ -f $zenv ]; then source $zenv; fi
+
 if [ -f ~/.devenv ]; then source ~/.devenv; fi
