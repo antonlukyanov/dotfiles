@@ -8,7 +8,6 @@ elif [[ "${OS}" == "Linux" ]]; then
     IS_LINUX=true
 fi
 
-
 #
 # zsh configuration
 #
@@ -57,7 +56,7 @@ alias jnb='jupyter notebook'
 # Only for OSX
 #
 
-if $IS_MACOS ; then
+if [[ "$IS_MACOS" == true ]] ; then
     alias bi='brew install'
     alias bs='brew search'
     alias bl='brew list'
@@ -89,7 +88,7 @@ fi
 # Only for Linux
 #
 
-if $IS_LINUX ; then
+if [[ "$IS_LINUX" == true ]] ; then
     alias changefnmode='sudo bash -c "echo 2 > /sys/module/hid_apple/parameters/fnmode"'
 fi
 

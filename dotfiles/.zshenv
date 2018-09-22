@@ -3,17 +3,14 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 TERM=xterm-256color
 
-PATH=/usr/local/bin:/usr/local/sbin:$PATH
-PATH=$PATH:$HOME/bin
-PATH=$PATH:$HOME/bin/node_modules/.bin
-PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
-export PATH
+if [[ "$IS_MACOS" == true ]]; then
+    PATH=/usr/local/bin:/usr/local/sbin:$PATH
+    PATH=$PATH:$HOME/bin
+    PATH=$PATH:$HOME/bin/node_modules/.bin
+    export PATH
 
-PYTHONPATH=$HOME/Development/current/pamela/utils
-PYTHONPATH=$PYTHONPATH:$HOME/Development/current/devenv/share
-export PYTHONPATH
-
-export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_ANALYTICS=1
+fi
 
 # So that libraries lying in the same folder with executable could be found.
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./
@@ -26,7 +23,7 @@ else
     export EDITOR='subl'
 fi
 
-if [[ $(uname) == 'Linux' ]]; then
+if [[ "$IS_LINUX" == true ]]; then
     export SHELL='/usr/bin/zsh'
 fi
 
