@@ -7,6 +7,7 @@ if [[ "$IS_MACOS" == true ]]; then
     PATH=/usr/local/bin:/usr/local/sbin:$PATH
     PATH=$PATH:$HOME/bin
     PATH=$PATH:$HOME/bin/node_modules/.bin
+    PATH=$PATH:~/.local/bin
     export PATH
 
     export HOMEBREW_NO_ANALYTICS=1

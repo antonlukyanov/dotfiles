@@ -52,6 +52,8 @@ alias sz='du -h -d 0'
 
 alias jnb='jupyter notebook'
 
+alias yaml2js="python3 -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
+
 #
 # Only for OSX
 #
@@ -113,9 +115,9 @@ alias acc='m acc --tree'
 alias m.exp.monthly='bal --tree -p $(date +'%Y') --monthly Расходы'
 alias m.exp.monthly3='bal --tree -p "$(date -v-3m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
 alias m.exp.monthly12='bal --tree -p "$(date -v-12m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
-alias m.sal.monthly="bal --tree -p $(date +'%Y/%m') --monthly Доходы"
-alias m.sal.monthly3='bal --tree -p "$(date -v-3m +'%Y/%m') $(date +'%Y/%m')" --monthly Доходы'
-alias m.sal.monthly12='bal --tree -p "$(date -v-12m +'%Y/%m') $(date +'%Y/%m')" --monthly Доходы'
+alias m.inc.monthly="bal --tree -p $(date +'%Y/%m') --monthly Доходы"
+alias m.inc.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы'
+alias m.inc.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы'
 alias m.activity='m activity --monthly'
 
 #
@@ -123,6 +125,13 @@ alias m.activity='m activity --monthly'
 #
 
 alias cvt.toalac='for f in *.flac; do ffmpeg -i "$f"  -vf "crop=((in_w/2)*2):((in_h/2)*2)" -c:a alac "${f%.flac}.m4a"; done'
+
+#
+# Docker
+#
+
+alias d.ps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
+alias d.ex='docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it'
 
 zrclocal="$HOME/.zshrc-local"
 if [ -f $zrclocal ]; then source $zrclocal; fi
