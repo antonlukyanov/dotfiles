@@ -18,7 +18,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # avit and ys theme are also good ones.
-ZSH_THEME="antonlukyanov"
+ZSH_THEME="antonlukyanov_dark"
 CASE_SENSITIVE="false"
 DISABLE_AUTO_UPDATE="false"
 export UPDATE_ZSH_DAYS=7
@@ -27,7 +27,7 @@ DISABLE_AUTO_TITLE="false"
 DISABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="false"
 HIST_STAMPS="dd/mm/yyyy"
-plugins=(sudo python git mercurial)
+plugins=(sudo python mercurial)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,15 +58,16 @@ alias yaml2js="python3 -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin
 # Only for OSX
 #
 
-if [[ "$IS_MACOS" == true ]] ; then
+if [[ "$IS_MACOS" == true ]]; then
     alias bi='brew install'
     alias bs='brew search'
     alias bl='brew list'
     alias bo='brew options'
     alias bu='brew update'
-    alias f='open -a Finder .'
+    alias fo='open -a Finder .'
     alias ftp.start='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
     alias ftp.stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
+    alias st='open -a SourceTree'
 
     #
     # PostgreSQL
@@ -90,7 +91,7 @@ fi
 # Only for Linux
 #
 
-if [[ "$IS_LINUX" == true ]] ; then
+if [[ "$IS_LINUX" == true ]]; then
     alias changefnmode='sudo bash -c "echo 2 > /sys/module/hid_apple/parameters/fnmode"'
 fi
 
@@ -115,6 +116,7 @@ alias acc='m acc --tree'
 alias m.exp.monthly='bal --tree -p $(date +'%Y') --monthly Расходы'
 alias m.exp.monthly3='bal --tree -p "$(date -v-3m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
 alias m.exp.monthly12='bal --tree -p "$(date -v-12m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
+alias m.exp.monthly12avg='m.exp.monthly12 --average'
 alias m.inc.monthly="bal --tree -p $(date +'%Y/%m') --monthly Доходы"
 alias m.inc.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы'
 alias m.inc.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы'
@@ -138,5 +140,3 @@ if [ -f $zrclocal ]; then source $zrclocal; fi
 
 zenv="$HOME/.zshenv"
 if [ -f $zenv ]; then source $zenv; fi
-
-if [ -f ~/.devenv ]; then source ~/.devenv; fi

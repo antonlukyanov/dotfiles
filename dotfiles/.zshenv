@@ -21,7 +21,7 @@ export LD_LIBRARY_PATH
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 else
-    export EDITOR='subl'
+    export EDITOR='atom'
 fi
 
 if [[ "$IS_LINUX" == true ]]; then
