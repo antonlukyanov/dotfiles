@@ -1,5 +1,5 @@
 [hostfingerprints]
-bitbucket.org = 3f:d3:c5:17:23:3c:cd:f5:2d:17:76:06:93:7e:ee:97:42:21:14:aa
+bitbucket.org = 4e:6a:4c:3b:82:15:ef:df:97:38:5e:50:ef:b9:86:42:84:3b:89:f0
 
 [ui]
 ssh = ssh -C

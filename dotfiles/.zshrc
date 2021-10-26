@@ -112,14 +112,15 @@ alias reg='m reg'
 alias reg.exp='m reg Расходы'
 alias reg.exp.tm='reg.exp -p "this month"'
 alias reg.exp.lm='reg.exp -p "last month"'
+alias reg.inc.tm='m reg Доходы -p "this month"'
+alias reg.inc.lm='m reg Доходы -p "last month"'
 alias acc='m acc --tree'
-alias m.exp.monthly='bal --tree -p $(date +'%Y') --monthly Расходы'
-alias m.exp.monthly3='bal --tree -p "$(date -v-3m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
-alias m.exp.monthly12='bal --tree -p "$(date -v-12m +'%Y/%m') $(date +'%Y/%m')" --monthly Расходы'
-alias m.exp.monthly12avg='m.exp.monthly12 --average'
-alias m.inc.monthly="bal --tree -p $(date +'%Y/%m') --monthly Доходы"
-alias m.inc.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы'
-alias m.inc.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы'
+alias m.exp.monthly='bal --tree -p "$(date +'%Y')/01 $(date -v+1m +'%Y/%m')" --monthly Расходы --average'
+alias m.exp.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m') $(date +'%Y/%m/%d')" --monthly Расходы --average'
+alias m.exp.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m') $(date +'%Y/%m/%d')" --monthly Расходы --average'
+alias m.inc.monthly="bal --tree -p $(date +'%Y') --monthly Доходы --average"
+alias m.inc.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы --average'
+alias m.inc.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m') $(date -v+1m +'%Y/%m/%d')" --monthly Доходы --average'
 alias m.activity='m activity --monthly'
 
 #
@@ -135,6 +136,25 @@ alias cvt.mkv2mp4='for f in *.flac; do ffmpeg -i "$f" -codec copy "${f%.*}.mp4";
 
 alias d.ps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 alias d.ex='docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it'
+
+# git_repo_delete ysu-mf/gui-a2-colorpicker-kondratevsergey
+function git_repo_delete(){
+  curl -vL \
+    -H "Authorization: token $GITHUB_SECRET" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/vnd.github.v3+json" \
+    -X DELETE "https://api.github.com/repos/$1"
+}
+
+# Don't forget to specify token.
+# git_repo_list orgs/ysu-mf 1
+function git_repo_list(){
+  curl -L \
+    -H "Authorization: token $GITHUB_SECRET" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/vnd.github.v3+json" \
+    "https://api.github.com/$1/repos?per_page=100&page=$2"
+}
 
 zrclocal="$HOME/.zshrc-local"
 if [ -f $zrclocal ]; then source $zrclocal; fi
