@@ -1,2 +1,2 @@
-local ret_status="%(?:%{$fg_bold[blue]%}λ :%{$fg_bold[red]%}λ )"
+local ret_status="%(?:%{$fg_bold[blue]%}λ :%{$fg[red]%}λ )"
 PROMPT='${ret_status} %{$fg[black]%}%c%{$reset_color%} '

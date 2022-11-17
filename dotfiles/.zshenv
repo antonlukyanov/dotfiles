@@ -14,8 +14,8 @@ if [[ "$IS_MACOS" == true ]]; then
 fi
 
 # So that libraries lying in the same folder with executable could be found.
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./
-export LD_LIBRARY_PATH
+# LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./
+# export LD_LIBRARY_PATH
 
 # Preferred editor for remote and local sessions
 if [[ -n $SSH_CONNECTION ]]; then
