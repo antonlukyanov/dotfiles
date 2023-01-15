@@ -46,6 +46,7 @@ alias ungz='gzip -dv'
 
 alias updrc='source $HOME/.zshrc'
 alias zshrc='$EDITOR $HOME/.zshrc'
+alias sshconfig='$EDITOR $HOME/.ssh/config'
 
 alias where='which'
 alias sz='du -h -d 0'

@@ -39,6 +39,16 @@ done
 dotfilesdir=$1
 installdir=$2
 
+OS=$(uname)
+IS_MACOS=false
+IS_LINUX=false
+
+if [[ "${OS}" == "Darwin" ]]; then
+    IS_MACOS=true
+elif [[ "${OS}" == "Linux" ]]; then
+    IS_LINUX=true
+fi
+
 if [[ -z "$dotfilesdir" ]]; then
     dotfilesdir=$PWD/dotfiles
 fi
@@ -74,3 +84,7 @@ for dotfile in $(find $dotfilesdir -type f); do
     echo "  $relfilepath"
     ln -s "$dotfile" "$dstfile"
 done
+
+if [[ "$IS_MACOS" == true ]]; then
+    ln -s $HOME/Yandex.Disk.localized/.hledger.journal $HOME/.hledger.journal
+fi
