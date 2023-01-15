@@ -115,12 +115,12 @@ alias reg.exp.lm='reg.exp -p "last month"'
 alias reg.inc.tm='m reg Доходы -p "this month"'
 alias reg.inc.lm='m reg Доходы -p "last month"'
 alias acc='m acc --tree'
-alias m.exp.monthly='bal --tree -p "$(date +'%Y')/01 $(date -v+1m +'%Y/%m')" --monthly Расходы --average'
-alias m.exp.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m') $(date +'%Y/%m/%d')" --monthly Расходы --average'
-alias m.exp.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m') $(date +'%Y/%m/%d')" --monthly Расходы --average'
+alias m.exp.monthly='bal --tree -p "$(date +'%Y/%m')/01..$(date -v+1m +'%Y/%m')" --monthly Расходы --average'
+alias m.exp.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m')..$(date +'%Y/%m/%d')" --monthly Расходы --average'
+alias m.exp.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m')..$(date +'%Y/%m/%d')" --monthly Расходы --average'
 alias m.inc.monthly="bal --tree -p $(date +'%Y') --monthly Доходы --average"
-alias m.inc.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m') $(date -v+1m +'%Y/%m')" --monthly Доходы --average'
-alias m.inc.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m') $(date -v+1m +'%Y/%m/%d')" --monthly Доходы --average'
+alias m.inc.monthly3='bal --tree -p "$(date -v-2m +'%Y/%m')..$(date -v+1m +'%Y/%m')" --monthly Доходы --average'
+alias m.inc.monthly12='bal --tree -p "$(date -v-11m +'%Y/%m')..$(date -v+1m +'%Y/%m/%d')" --monthly Доходы --average'
 alias m.activity='m activity --monthly'
 
 #
