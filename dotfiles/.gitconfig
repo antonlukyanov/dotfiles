@@ -1,3 +1,6 @@
+[core]
+    editor = /usr/local/bin/code --wait
+
 [alias]
     co = checkout
     cob = checkout -b
@@ -7,16 +10,20 @@
     brD = branch -D
     st = status
     aa = add -A .
-    c = commit --edit -m 'COMMIT MESSAGE'
+    c = commit
     cm = commit -m
-    aac = !git add -A . && git commit --edit -m 'COMMIT MESSAGE'
+    aac = !git add -A . && git commit
     aacm = !git add -A . && git commit -m
     cp = cherry-pick
-    amend = commit --amend -m
+    amend = commit --amend
+    amendm = commit --amend -m
     po = push origin
-    pl = git pull
+    pl = pull
     plo = pull origin
+
     unstage = reset --soft HEAD^
+    uncommit = reset --soft HEAD~1
+    unadd = reset HEAD
 
     # Format: commitHash YYYY-MM-DD Commit Message [Author]
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
