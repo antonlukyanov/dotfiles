@@ -1,6 +1,9 @@
 [core]
     editor = /usr/local/bin/code --wait
 
+[include]
+    path = ~/.gitconfig-local
+
 [alias]
     co = checkout
     cob = checkout -b
@@ -20,6 +23,8 @@
     po = push origin
     pl = pull
     plo = pull origin
+    d = diff
+    ds = diff --staged
 
     unstage = reset --soft HEAD^
     uncommit = reset --soft HEAD~1
