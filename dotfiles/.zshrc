@@ -55,6 +55,8 @@ alias jnb='jupyter notebook'
 
 alias yaml2js="python3 -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
 
+alias g='git'
+
 #
 # Only for OSX
 #
@@ -155,6 +157,22 @@ function git_repo_list(){
     -H "Content-Type: application/json" \
     -H "Accept: application/vnd.github.v3+json" \
     "https://api.github.com/$1/repos?per_page=100&page=$2"
+}
+
+function num_files(){
+    find $1 -type f -or -type l | wc -l
+}
+
+function num_files_only(){
+    find $1 -type f | wc -l
+}
+
+function num_links(){
+    find $1 -type l | wc -l
+}
+
+function num_dirs(){
+    find $1 -mindepth 1 -type d | wc -l
 }
 
 zrclocal="$HOME/.zshrc-local"
